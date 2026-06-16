@@ -11,6 +11,16 @@ bin/*
 # 에디터 스왑
 *.swp
 
+# Python (magenta/scripts/tests 보조 코드)
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+venv/
+env/
+
+# 로그
+*.log
+
 # 로컬 전용 — 에이전트는 디스크에서 읽되 원격엔 올리지 않는다
 AGENTS.md
 CLAUDE.md
