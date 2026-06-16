@@ -1,0 +1,20 @@
+# C++ 빌드 산출물
+*.o
+*.so
+*.a
+*.out
+obj/*
+!obj/.gitkeep
+bin/*
+!bin/.gitkeep
+
+# 에디터 스왑
+*.swp
+
+# 로컬 전용 — 에이전트는 디스크에서 읽되 원격엔 올리지 않는다
+AGENTS.md
+CLAUDE.md
+
+# 시스템
+.DS_Store
+Thumbs.db
