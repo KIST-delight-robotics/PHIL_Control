@@ -143,8 +143,8 @@ void AgentAction::policy_gesture(std::string type)
     // 1. 인사 (Wave) - 팔을 올려 인사 자세를 잡은 뒤 손목만 빠르게 흔든다.
     if (type == "wave" || type == "hi")
     {
-        // 인사 방향으로 시선
-        policy_lookAt(20, 95);
+        // 인사 방향으로 시선 (살짝 위: tilt 90 미만)
+        policy_lookAt(20, 85);
         // 팔을 인사 자세로 올리기 (정상 속도, 각 관절 동시 이동)
         policy_moveJoint("R_arm1", 45.0);
         policy_moveJoint("R_arm2", 45.0);   // 기존 20 -> 45: 팔을 더 높이 올려 인사처럼 보이게
@@ -173,10 +173,11 @@ void AgentAction::policy_gesture(std::string type)
     // 2. 끄덕임 (Nod) - DXL 모터 사용
     else if (type == "nod"){
         // 끄덕임: 아래 -> 위 -> 정면
-        policy_lookAt(0, 70); // 아래
+        // tilt 관례(연주 경로/planner와 동일): 정면 90, 위 70, 아래 110
+        policy_lookAt(0, 110); // 아래
         // 연속 동작은 큐에 순차적으로 넣으면 됨 (PathManager 구조상)
         // 실제로는 시간 지연이 필요할 수 있음.
-        policy_lookAt(0, 110); // 위 
+        policy_lookAt(0, 70); // 위
         // V1에서는 단순하게 구현.
         policy_lookAt(0, 90);  // 정면
     }
@@ -196,7 +197,7 @@ void AgentAction::policy_gesture(std::string type)
         policy_moveJoint("L_arm3", 95.0);
         policy_moveJoint("R_wrist", 0.0);
         policy_moveJoint("L_wrist", 0.0);
-        policy_lookAt(0, 105);
+        policy_lookAt(0, 75);
     }
 }
 
